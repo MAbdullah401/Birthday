@@ -1,0 +1,1 @@
+export const imageUrl = '/images/birthday-bg.jpg';
