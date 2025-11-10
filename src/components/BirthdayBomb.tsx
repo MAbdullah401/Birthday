@@ -17,8 +17,8 @@ const Container = styled.div`
 const BombContainer = styled(motion.div)`
   position: relative;
   z-index: 15; /* above background */
-  width: 200px;
-  height: 200px;
+  width: min(200px, 50vw);
+  height: min(200px, 50vw);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,31 +104,52 @@ const ContentContainer = styled(motion.div)`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   color: white;
   padding: 20px;
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(10px);
   z-index: 30;
+  overflow-y: auto;
+  padding-top: clamp(40px, 10vh, 80px);
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
 `;
 
 const BirthdayText = styled(motion.h1)`
-  font-size: 4rem;
+  font-size: clamp(2rem, 5vw, 4rem);
   background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
   margin-bottom: 30px;
+  padding: 0 10px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 31;
+  background-color: rgba(0, 0, 0, 0.55);
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  @media (max-width: 768px) {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    margin-bottom: 20px;
+  }
 `;
 
 const WishesText = styled(motion.p)`
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 3vw, 1.5rem);
   text-align: center;
   line-height: 1.6;
   max-width: 800px;
   margin: 20px auto;
   color: #fff;
+  padding: 0 15px;
 `;
 
 const PhotoRow = styled.div`
@@ -138,21 +159,33 @@ const PhotoRow = styled.div`
   margin-top: 20px;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 0 15px;
+  width: 100%;
+  
+  @media (max-width: 768px) {
+    gap: 16px;
+    flex-direction: column;
+  }
 `;
 
 const PhotoLeft = styled.div`
-  width: 260px;
-  flex: 0 0 260px;
+  width: min(260px, 90vw);
+  flex: 0 0 auto;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   background: rgba(255,255,255,0.03);
+  height: min(260px, 90vw);
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  @media (max-width: 768px) {
+    margin: 0 auto;
   }
 `;
 
